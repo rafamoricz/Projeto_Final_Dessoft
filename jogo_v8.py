@@ -151,7 +151,7 @@ pygame.mixer.music.play(loops=-1)
 while game:
     clock.tick(FPS)
     now = time.time()
-    if now > starttime + 160:
+    if now > starttime + 60:
         print('Your score was: {}'.format(score))
         break
 
