@@ -174,6 +174,36 @@ while game:
             if event.key == pygame.K_RIGHT:
                 player.speedx -= 12
 
+        while show_title_screen or fade_title_screen:
+        # Event Handling
+            for event in pygame.event.get():
+            # Se deu quit no pygame
+                if event.type == pygame.QUIT:
+                    repeat_game = False
+                show_title_screen = False
+                elif event.type == KEYDOWN:
+                # Utiliza tecla ESC
+                if event.key == K_ESCAPE:
+                    repeat_game = False
+                show_title_screen = False
+                # Enter para continuar ou dar restart
+                if event.key == K_RETURN:
+                    show_title_screen = False
+                    fade_title_screen = True
+                # Nível de dificuldade
+                if event.key == K_UP:
+                    
+                    if current_difficulty < len(difficulty) - 1:
+                        current_difficulty += 1
+                    else:
+                        current_difficulty = 0
+                if event.key == K_DOWN:
+                    
+                    if current_difficulty == 0:
+                        current_difficulty = len(difficulty) - 1
+                    else:
+                        current_difficulty -= 1
+    
     # ----- Atualiza estado do jogo
     # Atualizando a posição das frutas
     all_sprites.update()
